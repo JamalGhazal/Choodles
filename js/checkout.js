@@ -1,3 +1,10 @@
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user) {
+  alert("Please sign in before checking out.");
+  window.location.href = "login.html";
+}
+
 const cartDiv = document.getElementById("cart-items");
 const totalDiv = document.getElementById("cart-total");
 
