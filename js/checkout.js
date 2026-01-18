@@ -68,3 +68,11 @@ if (placeOrderBtn) {
     window.location.href = "confirm.html";
   });
 }
+const payBtn = document.getElementById("pay-now");
+
+if (payBtn) {
+  payBtn.addEventListener("click", () => {
+    window.location.href = "https://buy.stripe.com/cNi9AVbkxd1Bdrc9p21RC00";
+  });
+}
+
