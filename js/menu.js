@@ -19,13 +19,24 @@ menu.forEach(item => {
 
   div.innerHTML = `
     <h3>${item.name} — £${item.price.toFixed(2)}</h3>
-    ${item.toppings.map(t =>
-      `<label>
-        <input type="checkbox" data-price="${t.price}">
-        ${t.name} (+£${t.price})
-      </label><br>`
-    ).join("")}
-    <br>
+
+    <div id="toppings-${item.id}">
+      ${item.toppings.map((t, i) => `
+        <label>
+          <input type="checkbox" 
+                 data-name="${t.name}" 
+                 data-price="${t.price}">
+          ${t.name} (+£${t.price})
+        </label><br>
+      `).join("")}
+    </div>
+
+    <label>
+      Quantity:
+      <input type="number" id="qty-${item.id}" value="1" min="1">
+    </label>
+    <br><br>
+
     <button onclick="addToCart(${item.id})">Add to cart</button>
   `;
 
