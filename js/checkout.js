@@ -75,4 +75,36 @@ if (payBtn) {
     window.location.href = "https://buy.stripe.com/cNi9AVbkxd1Bdrc9p21RC00";
   });
 }
+const payNowBtn = document.getElementById("pay-now");
+
+if (payNowBtn) {
+  payNowBtn.addEventListener("click", () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (cart.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    if (!user) {
+      alert("Please sign in first.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    // OPTIONAL: save order before payment
+    const order = {
+      user,
+      items: cart,
+      total: cart.reduce((sum, i) => sum + i.total, 0),
+      date: new Date().toISOString()
+    };
+
+    localStorage.setItem("lastOrder", JSON.stringify(order));
+
+    // Redirect to Stripe
+    window.location.href = "https://buy.stripe.com/cNi9AVbkxd1Bdrc9p21RC00";
+  });
+}
 
