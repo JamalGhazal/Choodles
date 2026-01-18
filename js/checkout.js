@@ -4,7 +4,12 @@ if (!user) {
   alert("Please sign in before checking out.");
   window.location.href = "login.html";
 }
+const deliveryDiv = document.getElementById("delivery-info");
 
+deliveryDiv.innerHTML = `
+  <p><strong>Name:</strong> ${user.name}</p>
+  <p><strong>Deliver to:</strong> Flat ${user.flat}</p>
+`;
 const cartDiv = document.getElementById("cart-items");
 const totalDiv = document.getElementById("cart-total");
 
