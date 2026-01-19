@@ -1,3 +1,10 @@
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user) {
+  alert("Please sign in before checking out.");
+  window.location.href = "login.html";
+}
+
 const placeOrderBtn = document.getElementById("place-order");
 const MAX_ITEMS_PER_FLAT = 2;
 
