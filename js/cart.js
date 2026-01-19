@@ -1,6 +1,6 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
 function addToCart(itemId) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
   const item = menu.find(m => m.id === itemId);
   const toppingsDiv = document.getElementById(`toppings-${itemId}`);
   const qty = parseInt(document.getElementById(`qty-${itemId}`).value);
