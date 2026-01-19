@@ -1,5 +1,11 @@
 const MAX_ITEMS_PER_FLAT = 2;
 
+if (placeOrderBtn) {
+  placeOrderBtn.addEventListener("click", () => {
+    ...
+  });
+}
+
 const placeOrderBtn = document.getElementById("place-order");
 
 if (placeOrderBtn) {
