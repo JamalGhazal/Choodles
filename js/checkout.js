@@ -1,12 +1,5 @@
-const MAX_ITEMS_PER_FLAT = 2;
-
-if (placeOrderBtn) {
-  placeOrderBtn.addEventListener("click", () => {
-    ...
-  });
-}
-
 const placeOrderBtn = document.getElementById("place-order");
+const MAX_ITEMS_PER_FLAT = 2;
 
 if (placeOrderBtn) {
   placeOrderBtn.addEventListener("click", () => {
@@ -39,8 +32,7 @@ if (placeOrderBtn) {
 
     if (alreadyOrdered + itemsInOrder > MAX_ITEMS_PER_FLAT) {
       alert(
-        `Launch Day limit reached.\n\n` +
-        `Each flat can order up to ${MAX_ITEMS_PER_FLAT} items today.`
+        `Launch Day limit reached.\nEach flat can order up to ${MAX_ITEMS_PER_FLAT} items.`
       );
       return;
     }
@@ -54,22 +46,23 @@ if (placeOrderBtn) {
       paid: false
     };
 
-    // Save last order
+    // Save for confirmation page
     localStorage.setItem("lastOrder", JSON.stringify(order));
 
-    // Save to admin order list
+    // Save for admin
     const adminOrders =
       JSON.parse(localStorage.getItem("adminOrders")) || [];
 
     adminOrders.push(order);
     localStorage.setItem("adminOrders", JSON.stringify(adminOrders));
 
-    // Update flat usage count
+    // Update flat usage
     flatOrders[flat] = alreadyOrdered + itemsInOrder;
     localStorage.setItem("flatOrders", JSON.stringify(flatOrders));
 
-    // Clear cart and confirm
+    // Clear cart
     localStorage.removeItem("cart");
+
     window.location.href = "confirm.html";
   });
 }
